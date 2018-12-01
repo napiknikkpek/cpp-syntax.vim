@@ -1,7 +1,6 @@
 
 syn clear cType
 syn clear cStructure
-" typedef
 syn clear cStorageClass
 syn clear cBlock
 syn clear cBracket
@@ -30,25 +29,30 @@ syn keyword cppSpecial char char8_t char16_t char32_t wchar_t bool short int lon
 
 syn match cppId '\I\i*'
 syn match cppId '\I\i*' contained
+syn match cppId '\l\i*{'me=e-1
+syn match cppId '\l\i*{'me=e-1 contained
 syn match cppId '\I\i*.'me=e-1 contained
 syn match cppId '\I\i*->'me=e-2 contained
 syn match cppId '.\I\i*'ms=s+1 contained
 syn match cppId '->\I\i*'ms=s+2 contained
 syn match cppInTempId '\I\i*' contained
 
-syn match cppTypeCons '\I\i*\(<\(\_[^>]*\(\i\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*{'me=e-1
-  \ contains=cppInTempId,cppTempContext
-
-syn match cppTypeCons '\I\i*\(<\(\_[^>]*\(\i\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*{'me=e-1
-  \ contains=cppInTempId,cppTempContext
-  \ contained
-
+syn match cppTypeId '\u\i*{'me=e-1
+syn match cppTypeId '\u\i*{'me=e-1 contained
+syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext
+syn match cppTypeId '\I\i*::'me=e-2
 syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext contained
 syn match cppTypeId '\I\i*::'me=e-2 contained
 
-syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext
-syn match cppTypeId '\I\i*::'me=e-2
-syn match cppFuncId '\I\i*\(<\(\_[^>]*\(\i\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*('me=e-1 contains=cppTempContext
+syn match cppTypeIdL '\I\i*' contained
+
+syn match cppTypeIdX '\I\i*\([\*&]\|const\|\s\)\+\I'me=e-1 
+  \ contains=cppTempContext,cppTypeIdL,cppStatement
+syn match cppTypeIdX '\I\i*\([\*&]\|const\|\s\)\+\I'me=e-1 
+  \ contains=cppTempContext,cppTypeIdL,cppStatement contained
+
+syn match cppFuncId '\I\i*\(<\(\_[^>]*\(\i\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*('me=e-1 
+  \ contains=cppTempContext
 
 syn match cppParenContext '(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)'
   \ contains=cppTempContext,cppId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppTypeCons
@@ -58,17 +62,8 @@ syn match cppTempContext '<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*
   \ contains=cppParenContext,cppInTempId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppTypeCons
   \ contained
 
-syn match cppIdDeclType '\I\i*' contained
-syn match cppIdDeclName '\(\s\|[\*&]\)\I\i*'ms=s+1 contained
-
-syn match cppFuncId '\I\i*\(<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*('me=e-1 contains=cppTempContext contained
-
-syn match cppIdDecl
-  \ '\I\i*\(<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\([\*&]\|const\|\s\)\+\I\i*'
-  \ contains=cppTempContext,cppIdDeclType,cppIdDeclName,cppFuncId,cppSpecial,cppStatement,cppNumber
-
-" Type declaration
-syn match cppTypeIdDecl '\I\i*' contained
+syn match cppFuncId '\I\i*\(<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*('me=e-1 
+  \ contains=cppTempContext contained
 
 syn match cppStatement 'enum' 
 syn match cppStatement 'class' 
@@ -98,9 +93,6 @@ syn match cppStatement 'public' contained
 syn match cppStatement 'private' contained
 syn match cppStatement 'protected' contained
 
-syn match cppAutoDecl 'auto\_s\+\I\i*'
-  \ contains=cppId,cppFuncId,cppStatement
-
 syn match cppTypeDecl
   \ '\(using\|typedef\|namespace\|class\|struct\|union\|enum\)\([^{;]\|\(\(<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\)\)*[{;]'
   \ contains=cppTempContext,cppInTempId,cppStatement
@@ -108,11 +100,19 @@ syn match cppTypeDecl
 syn match cppTempParam 'typename\_s\+\I\i*'
   \ contains=cppInTempId,cppStatement,cppSpecial
 
+syn match cppStatement '\<\(const\|static\|dynamic\|reinterpret\)_cast\s*<'me=e-1
+syn match cppStatement '\<\(const\|static\|dynamic\|reinterpret\)_cast\s*<'me=e-1 
+  \ contained
+
 hi! def link cppSpecial Special
 hi! def link cppStatement Statement
+hi! def link cppModifier Statement
+hi! def link cppOperator Statement
+
 hi! def link cppType Type
 hi! def link cppFuncId Function
 hi! def link cppTypeId Type
+hi! def link cppTypeIdL Type
 hi! def link cppTypeIdDecl Type
 hi! def link cppId Identifier
 
