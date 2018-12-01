@@ -50,11 +50,11 @@ syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext
 syn match cppTypeId '\I\i*::'me=e-2
 syn match cppFuncId '\I\i*\(<\(\_[^>]*\(\i\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*('me=e-1 contains=cppTempContext
 
-syn match cppParenContext /(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)/
+syn match cppParenContext '(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)'
   \ contains=cppTempContext,cppId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppTypeCons
   \ contained
 
-syn match cppTempContext /<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>/ 
+syn match cppTempContext '<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>' 
   \ contains=cppParenContext,cppInTempId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppTypeCons
   \ contained
 
@@ -68,48 +68,45 @@ syn match cppIdDecl
   \ contains=cppTempContext,cppIdDeclType,cppIdDeclName,cppFuncId,cppSpecial,cppStatement,cppNumber
 
 " Type declaration
-syn match cppTypeIdDecl /\I\i*/ contained
+syn match cppTypeIdDecl '\I\i*' contained
 
-syn match cppStatement /enum/ 
-syn match cppStatement /class/ 
-syn match cppStatement /struct/ 
-syn match cppStatement /union/ 
-syn match cppStatement /namespace/
-syn match cppStatement /const/
-syn match cppStatement /typename/
-syn match cppStatement /auto/
-syn match cppStatement /using/
-syn match cppStatement /enum/ contained
-syn match cppStatement /class/ contained
-syn match cppStatement /struct/ contained
-syn match cppStatement /union/ contained
-syn match cppStatement /namespace/ contained
-syn match cppStatement /const/ contained
-syn match cppStatement /typename/ contained
-syn match cppStatement /auto/ contained
-syn match cppStatement /using/ contained
+syn match cppStatement 'enum' 
+syn match cppStatement 'class' 
+syn match cppStatement 'struct' 
+syn match cppStatement 'union' 
+syn match cppStatement 'namespace'
+syn match cppStatement 'const'
+syn match cppStatement 'typename'
+syn match cppStatement 'auto'
+syn match cppStatement 'using'
+syn match cppStatement 'typedef'
+syn match cppStatement 'enum' contained
+syn match cppStatement 'class' contained
+syn match cppStatement 'struct' contained
+syn match cppStatement 'union' contained
+syn match cppStatement 'namespace' contained
+syn match cppStatement 'const' contained
+syn match cppStatement 'typename' contained
+syn match cppStatement 'auto' contained
+syn match cppStatement 'using' contained
+syn match cppStatement 'typedef' contained
 
-syn match cppStatement /public/
-syn match cppStatement /private/
-syn match cppStatement /protected/
-syn match cppStatement /public/ contained
-syn match cppStatement /private/ contained
-syn match cppStatement /protected/ contained
+syn match cppStatement 'public'
+syn match cppStatement 'private'
+syn match cppStatement 'protected'
+syn match cppStatement 'public' contained
+syn match cppStatement 'private' contained
+syn match cppStatement 'protected' contained
 
 syn match cppAutoDecl 'auto\_s\+\I\i*'
   \ contains=cppId,cppFuncId,cppStatement
 
-syn match cppUsingDecl
-  \ 'using\([^;]\|\(\(<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\)\)*;'
+syn match cppTypeDecl
+  \ '\(using\|typedef\|namespace\|class\|struct\|union\|enum\)\([^{;]\|\(\(<\(\_[^>]*\(\I\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\)\)*[{;]'
   \ contains=cppTempContext,cppInTempId,cppStatement
 
 syn match cppTempParam 'typename\_s\+\I\i*'
   \ contains=cppInTempId,cppStatement,cppSpecial
-
-syn match cppTypeDecl
-  \ /\(using\_s*namespace\|class\|struct\|union\|enum\)\_.\{-}[{;]/
-  \ contains=cppTypeIdDecl,cppStatement
-
 
 hi! def link cppSpecial Special
 hi! def link cppStatement Statement
