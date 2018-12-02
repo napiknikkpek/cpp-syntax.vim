@@ -124,12 +124,7 @@ hi! def link cppType Type
 hi! def link cppFuncId Function
 hi! def link cppTypeId Type
 hi! def link cppTypeIdL Type
-hi! def link cppTypeIdDecl Type
 hi! def link cppId Identifier
-
-hi! def link cppIdDeclType Type
-hi! def link cppIdDeclName Identifier
-
 hi! def link cppInTempId Type
 
 hi! def link cppMacro PreProc
