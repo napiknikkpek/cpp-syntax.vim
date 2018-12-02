@@ -46,9 +46,9 @@ syn match cppTypeId '\I\i*::'me=e-2 contained
 
 syn match cppTypeIdL '\I\i*' contained
 
-syn match cppTypeIdX '\I\i*\([\*&]\|const\|\s\)\+\I'me=e-1 
+syn match cppTypeIdX '\I\i*\([\*&]\|const\|\_s\)\+\I'me=e-1 
   \ contains=cppTempContext,cppTypeIdL,cppStatement
-syn match cppTypeIdX '\I\i*\([\*&]\|const\|\s\)\+\I'me=e-1 
+syn match cppTypeIdX '\I\i*\([\*&]\|const\|\_s\)\+\I'me=e-1 
   \ contains=cppTempContext,cppTypeIdL,cppStatement contained
 
 syn match cppFuncId '\I\i*\(<\(\_[^>]*\(\i\i*<\_[^>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)*\_[^>]*>\)\?\_s*('me=e-1 
