@@ -110,6 +110,11 @@ syn match cppStatement '\<\(const\|static\|dynamic\|reinterpret\)_cast\s*<'me=e-
 
 syn keyword cppBoolean true false contained
 
+syn match cppMacro '\<\(\u\|_\)\{5,}\>'
+
+syn region cDefine start="^\s*\zs\(%:\|#\)\s*\(define\|undef\)\>" skip="\\$" end="$" keepend
+syn region cPreProc start="^\s*\zs\(%:\|#\)\s*\(pragma\>\|line\>\|warning\>\|warn\>\|error\>\)" skip="\\$" end="$" keepend
+
 hi! def link cppSpecial Special
 hi! def link cppStatement Statement
 hi! def link cppModifier Statement
@@ -126,3 +131,5 @@ hi! def link cppIdDeclType Type
 hi! def link cppIdDeclName Identifier
 
 hi! def link cppInTempId Type
+
+hi! def link cppMacro PreProc
