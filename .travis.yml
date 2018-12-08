@@ -1,0 +1,12 @@
+language: generic
+os: linux
+dist: xenial
+
+install:
+  - apt install -y vim
+  - THEMIS_URL="https://github.com/thinca/vim-themis/archive/v1.5.4.tar.gz"
+  - mkdir themis
+  - travis_retry wget --no-check-certificate -O - ${THEMIS_URL} | tar --strip-components=1 -xz -C themis
+
+script:
+  - cd test && ${TRAVIS_BUILD_DIR}/themis/bin/themis .
