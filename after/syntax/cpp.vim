@@ -101,6 +101,16 @@ syn match cppIdDeclJoin '>\(\_s\+const\)\?\(\(\(\*\|&\|&&\)\(\_s*const\_s\)\?\)\
 syn match cppFuncId '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)\)*\_[^<>]*>\)\?\_s*('me=e-1 
   \ contains=cppTempContext contained
 
+syn match cppMemberInit 
+  \ ')\_s*:\(\_s*\I\i*\_s*\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\|{\(\_[^{}]*{\(\_[^{}]*{\_[^{}]*}\)*\_[^{}]*}\)*\_[^{}]*}\)\_s*[,{]\)*'ms=s+1,me=e-1
+  \ contains=cppClassId,cppVarId
+
+syn match cppMemberId '\I\i*'
+  \ contained
+
+syn match cppClassId '\u\i*'
+  \ contained
+
 syn match cppStatement '\<enum\>' 
 syn match cppStatement '\<class\>' 
 syn match cppStatement '\<struct\>' 
@@ -242,6 +252,8 @@ hi! def link cppTypeIdL Type
 hi! def link cppTypeIdR Identifier
 hi! def link cppPackIdR Identifier
 hi! def link cppId Identifier
+hi! def link cppMemberId Identifier
 hi! def link cppTypeId0 Type
+hi! def link cppClassId Type
 
 hi! def link cppMacro PreProc
