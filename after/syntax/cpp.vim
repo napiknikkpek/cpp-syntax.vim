@@ -1,4 +1,3 @@
-
 syn clear cType
 syn clear cStructure
 syn clear cStorageClass
