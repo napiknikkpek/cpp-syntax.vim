@@ -1,0 +1,15 @@
+set runtimepath+=../after
+set runtimepath+=../tools
+
+hi Comment ctermfg=0
+hi Constant ctermfg=0
+hi Identifier ctermfg=0
+hi Function ctermfg=0
+hi Define ctermfg=0
+hi Statement ctermfg=0
+hi String ctermfg=0
+hi PreProc ctermfg=0
+hi Type ctermfg=0
+hi Special ctermfg=0
+
+syntax enable

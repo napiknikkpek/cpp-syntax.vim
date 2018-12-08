@@ -1,0 +1,10 @@
+using namespace boost;
+using namespace boost::hana;
+using T;
+using boost::hana::fold;
+using T = My_item;
+using T = std::vector<int>;
+using T = std::index<3>;
+using T = typename Base::type;
+using T = decltype(func(a));
+using T = typename decltype(a)::type;
