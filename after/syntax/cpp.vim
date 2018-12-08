@@ -70,11 +70,20 @@ syn match cppFuncDecl '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(
   \ contained
 
 syn match cppParenCall '(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)'
-  \ contains=cppId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppBoolean
+  \ contains=cppId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppBoolean,cppCStyleCast
   \ contained
 
 syn match cppParenDecl '(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)'
   \ contains=cppIdDecl,cppTypeId0,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppBoolean,cppConst
+  \ contained
+
+syn match cppCStyleCast 
+  \ '(\(\_s*const\)\?\_s*\I\i*\(\_s\+const\)\?\(\_s*\(\*\|&\|&&\)\(\_s*const\)\?\)\?\_s*)\_s*\(\I\|(\)'me=e-1
+  \ contains=cppConst,cppTypeId0,cppSpecial
+
+syn match cppCStyleCast 
+  \ '(\(\_s*const\)\?\_s*\I\i*\(\_s\+const\)\?\(\_s*\(\*\|&\|&&\)\(\_s*const\)\?\)\?\_s*)\_s*\(\I\|(\)'me=e-1
+  \ contains=cppConst,cppTypeId0,cppSpecial
   \ contained
 
 syn match cppTempContext '<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)\)*\_[^<>]*>' 
