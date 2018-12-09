@@ -65,7 +65,7 @@ syn match cppFuncDecl '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(
   \ contained
 
 syn match cppOperatorDecl 
-  \ 'operator\_s*\([\*&+\-!~]\|--\|++\|&&\|||\|()\|\_s\+new\_s*\(\[\]\)\?\|\_s\+delete\_s*\(\[\]\)\?\)\_s*(' 
+  \ 'operator\_s*\([\*&+\-!~]=\?\|--\|++\|&&\|||\|()\|\_s\+new\_s*\(\[\]\)\?\|\_s\+delete\_s*\(\[\]\)\?\)\_s*(' 
   \ contains=cppParenDecl,cppStatement,cppOperator
 
 syn match cppParenCall '(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)'

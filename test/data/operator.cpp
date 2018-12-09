@@ -1,6 +1,7 @@
 void operator+(A, A a, int, int a);
 void A::operator+(A, A a, int, int a);
 void operator()(A, A a, int, int a);
+void operator+=(A, A a, int, int a);
 void A::operator()(A, A a, int, int a);
 void operator new(A, A a, int, int a);
 void operator new[](A, A a, int, int a);
