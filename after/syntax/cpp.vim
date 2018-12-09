@@ -102,8 +102,8 @@ syn match cppFuncId '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_
   \ contains=cppTempContext contained
 
 syn match cppMemberInit 
-  \ ')\_s*:\(\_s*\I\i*\_s*\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\|{\(\_[^{}]*{\(\_[^{}]*{\_[^{}]*}\)*\_[^{}]*}\)*\_[^{}]*}\)\_s*[,{]\)*'ms=s+1,me=e-1
-  \ contains=cppClassId,cppVarId
+  \ ')\_s*:\(\_s*\I\i*\_s*\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\|{\(\_[^{}]*{\(\_[^{}]*{\_[^{}]*}\)*\_[^{}]*}\)*\_[^{}]*}\)\_s*[,{]\)*'
+  \ contains=cppClassId,cppMemberId
 
 syn match cppMemberId '\I\i*'
   \ contained
