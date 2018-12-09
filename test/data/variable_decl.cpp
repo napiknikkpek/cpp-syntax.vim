@@ -44,3 +44,7 @@ const auto a;
 A&& a;
 auto&& a;
 A<X>&& a;
+A a{};
+A a();
+A a = A{};
+A a = type{};

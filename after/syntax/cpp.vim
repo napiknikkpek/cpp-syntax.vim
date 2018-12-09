@@ -23,14 +23,9 @@ syn match cppNumber display "\<0x\x\('\=\x\+\)*\(u\=l\{0,2}\|ll\=u\)\>"
 syn keyword cppStatement static register volatile extern inline restrict alignas noreturn thread_local return decltype constexpr mutable
 syn keyword cppStatement static register volatile extern inline restrict alignas noreturn thread_local return decltype constexpr mutable contained
 
-" syn keyword cppSpecial char char8_t char16_t char32_t wchar_t bool short int long signed unsigned float double void
-" syn keyword cppSpecial char char8_t char16_t char32_t wchar_t bool short int long signed unsigned float double void contained
-
 syn match cppId '\I\i*'
 syn match cppId '\I\i*' contained
 syn match cppTypeId0 '\I\i*' contained
-syn match cppId '\l\i*\_s*{'me=e-1
-syn match cppId '\l\i*\_s*{'me=e-1 contained
 syn match cppId '\I\i*\_s*.'me=e-1 contained
 syn match cppId '\I\i*\_s*->'me=e-2 contained
 syn match cppId '\.\_s*\I\i*'ms=s+1 contained
@@ -40,14 +35,15 @@ syn match cppTypeIdL '\I\i*' contains=cppSpecial contained
 syn match cppTypeIdL '::\_s*\I\i*'ms=s+2 contained
 
 syn match cppTypeIdR '\(\_s\|[\*&]\)\I\i*'ms=s+1 
-  \ contains=cppFuncDeclPre,cppFuncDecl,cppTypeId,cppId,cppTypeDecl,cppTempParam
+  \ contains=cppFuncDeclPre,cppFuncDecl,cppId,cppTypeDecl,cppTempParam
   \ contained
 
 syn match cppPackIdR '\.\.\.\s*\I\i*'ms=s+3 
-  \ contains=cppTypeId,cppId contained
+  \ contains=cppTypeId,cppId 
+  \ contained
 
-syn match cppTypeId '\u\i*\_s*{'me=e-1
-syn match cppTypeId '\u\i*\_s*{'me=e-1 contained
+syn match cppTypeId '\I\i*\_s*{'me=e-1
+syn match cppTypeId '\I\i*\_s*{'me=e-1 contained
 syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext
 syn match cppTypeId '\I\i*\_s*::'me=e-2
 syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext contained
