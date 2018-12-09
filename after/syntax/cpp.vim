@@ -12,6 +12,7 @@ syn clear cppStructure
 syn clear cppStatement
 
 syn keyword cppStatement new delete this friend
+syn keyword cppStatement new delete this friend contained
 
 syn match cppNumber display "\<0b[01]\('\=[01]\+\)*\(u\=l\{0,2}\|ll\=u\)\>"
   \ contained
@@ -35,7 +36,7 @@ syn match cppTypeIdL '\I\i*' contains=cppSpecial contained
 syn match cppTypeIdL '::\_s*\I\i*'ms=s+2 contained
 
 syn match cppTypeIdR '\(\_s\|[\*&]\)\I\i*'ms=s+1 
-  \ contains=cppFuncDeclPre,cppFuncDecl,cppId,cppTypeDecl,cppTempParam
+  \ contains=cppFuncDeclPre,cppFuncDecl,cppId,cppTypeDecl,cppTempParam,cppOperatorDecl
   \ contained
 
 syn match cppPackIdR '\.\.\.\s*\I\i*'ms=s+3 
@@ -50,13 +51,11 @@ syn match cppTypeId '\I\i*<'he=e-1 contains=cppTempContext contained
 syn match cppTypeId '\I\i*\_s*::'me=e-2 contained
 
 syn match cppFuncDeclPre '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)\)*\_[^<>]*>\)\?\_s*::\_s*\I'
-  \ contains=cppFuncDeclPre,cppFuncDecl,cppTypeId
+  \ contains=cppFuncDeclPre,cppFuncDecl,cppTypeId,cppOperatorDecl
   \ contained
 
 syn match cppFuncId '\I\i*\_s*('
 syn match cppFuncId '\I\i*\_s*(' contained
-syn match cppFuncId 'operator'
-syn match cppFuncId 'operator' contained
 
 syn match cppFuncId '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)\)*\_[^<>]*>\)\?\_s*('me=e-1 
   \ contains=cppTempContext
@@ -64,6 +63,10 @@ syn match cppFuncId '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_
 syn match cppFuncDecl '\I\i*\(<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)\)\)\)*\_[^<>]*>\)\?\_s*('he=e-1 
   \ contains=cppTempContext,cppParenDecl
   \ contained
+
+syn match cppOperatorDecl 
+  \ 'operator\_s*\([\*&+\-!~]\|--\|++\|&&\|||\|()\|\_s\+new\_s*\(\[\]\)\?\|\_s\+delete\_s*\(\[\]\)\?\)\_s*(' 
+  \ contains=cppParenDecl,cppStatement,cppOperator
 
 syn match cppParenCall '(\(\_[^()]*(\(\_[^()]*(\_[^()]*)\)*\_[^()]*)\)*\_[^()]*)'
   \ contains=cppId,cppTypeId,cppFuncId,cppSpecial,cppStatement,cppNumber,cppBoolean,cppCStyleCast
