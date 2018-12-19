@@ -93,7 +93,7 @@ syn match cppTempDeclContext '<\(\_[^<>]*\(\(\I\i*<\_[^<>]*>\)\|\((\(\_[^()]*(\(
   \ contains=cppTempParam,cppParenCall,cppTypeId0,cppTypeId,cppIdDecl,cppPackDecl,cppFuncId,cppSpecial,cppStatement,cppNumber,cppBoolean
   \ contained
 
-syn match cppIdDeclJoin '>\(\_s\+const\)\?\(\(\(\*\|&\|&&\)\(\_s*const\_s\)\?\)\|\_s\)\s*\I'
+syn match cppIdDeclJoin '>\(\_s\+const\)\?\s*\(\*\|&\|&&\|\_s\)\s*\(const\_s\+\)\?\I'
   \ contains=cppTypeIdR,cppConst
   \ contained
 
@@ -173,17 +173,17 @@ syn match cppSpecial '\<void\>' contained
 syn match cppPackDecl '\I\i*\s*\.\.\.\s*\I'
   \ contains=cppTypeIdL,cppPackIdR,cppStatement,cppSpecial
 
-syn match cppIdDecl 
-  \ '\I\i*\(\_s\+const\)\?\(\(\(\*\|&\|&&\)\(\s*const\_s\+\)\?\s*\I\)\|\(\_s\+\I\)\)'
+syn match cppIdDecl
+  \ '\I\i*\(\_s\+const\)\?\s*\(\*\|&\|&&\|\_s\)\s*\(const\_s\+\)\?\I'
   \ contains=cppTypeIdL,cppTypeIdR,cppStatement,cppConst
 
-syn match cppIdDecl 
-  \ '\I\i*\(\_s\+const\)\?\(\(\(\*\|&\|&&\)\(\s*const\_s\+\)\?\s*\I\)\|\(\_s\+\I\)\)'
+syn match cppIdDecl
+  \ '\I\i*\(\_s\+const\)\?\s*\(\*\|&\|&&\|\_s\)\s*\(const\_s\+\)\?\I'
   \ contains=cppTypeIdL,cppTypeIdR,cppStatement,cppConst
   \ contained
 
-" syn match cppExpr '\I\i*\s\+[\*&]\s\+\I\i*'
-"   \ contains=cppId,cppTypeId
+syn match cppExpr '\I\i*\_s\+\(\*\|&\|&&\)\s\+\I'
+  \ contains=cppId,cppTypeId
 
 syn match cppTempParam '\(typename\|class\)\_s\+\I\i*'
   \ contains=cppTypeId0,cppStatement
