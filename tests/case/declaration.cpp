@@ -1,0 +1,15 @@
+Foo t;
+Foo{};
+Foo{1, 2};
+Foo& f;
+Foo &f;
+Foo const& f;
+Foo const &f;
+Foo* f;
+Foo *f;
+Foo const* f;
+Foo const *f;
+Foo const* const f;
+Foo const *const f;
+Foo * f;
+Foo & f;

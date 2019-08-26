@@ -12,4 +12,4 @@ install:
 
 script:
   - export THEMIS_VIM=nvim
-  - cd test && ${TRAVIS_BUILD_DIR}/themis/bin/themis .
+  - cd tests && ${TRAVIS_BUILD_DIR}/themis/bin/themis .
