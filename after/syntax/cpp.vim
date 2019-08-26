@@ -21,6 +21,7 @@ syn match cpp_function '\<\I\i*('me=e-1
 syn match cpp_macro '\<\(\u\|_\)\{5,}\>'
 
 syn match cpp_function '\I\i*<'me=e-1
+syn match cpp_function '\I\i*<'me=e-1 contained
 
 syn match cpp_type '\I\i*::'me=e-2
 
@@ -40,7 +41,7 @@ syn match cpp_type '\<\I\i*_type\>'
 
 syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
-syn match cpp_typename_ctx 'typename \I\i*\(::\I\i*\)*' contains=cpp_keyword,cpp_type
+syn match cpp_typename_ctx 'typename \I\i*\(::\I\i*\)*' contains=cpp_keyword,cpp_type,cpp_function
 
 syn region cDefine start="^\s*\zs\(%:\|#\)\s*\(define\|undef\)\>" skip="\\$" end="$" keepend
 syn region cPreProc start="^\s*\zs\(%:\|#\)\s*\(pragma\>\|line\>\|warning\>\|warn\>\|error\>\)" skip="\\$" end="$" keepend
