@@ -46,6 +46,10 @@ syn match cpp_typename_ctx 'typename \I\i*\(::\I\i*\)*' contains=cpp_keyword,cpp
 syn region cDefine start="^\s*\zs\(%:\|#\)\s*\(define\|undef\)\>" skip="\\$" end="$" keepend
 syn region cPreProc start="^\s*\zs\(%:\|#\)\s*\(pragma\>\|line\>\|warning\>\|warn\>\|error\>\)" skip="\\$" end="$" keepend
 
+syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\=R"\z([[:alnum:]_{}[\]#<>%:;.?*\+\-/\^&|~!=,"']\{,16}\)(+ end=+)\z1"+ contains=@Spell
+
+syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=@Spell
+
 hi! def link cpp_keyword Statement
 hi! def link cpp_fundamental Special
 hi! def link cpp_function Function
