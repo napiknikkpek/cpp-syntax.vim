@@ -33,6 +33,7 @@ syn match cpp_type '\I\i*\s\+&\I'me=e-2
 
 syn match cpp_macro '\<\(\u\|\d\|_\)\{5,}\>'
 
+syn match cpp_keyword '\(class\|struct\)'
 syn match cpp_type 'using\s\+\I\i*' contains=cpp_keyword
 syn match cpp_type 'class\s\+\I\i*' contains=cpp_keyword
 syn match cpp_type 'struct\s\+\I\i*' contains=cpp_keyword
