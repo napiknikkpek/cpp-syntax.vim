@@ -44,7 +44,8 @@ syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
 syn match cpp_typename_ctx 'typename \I\i*\(::\I\i*\)*' contains=cpp_keyword,cpp_type,cpp_function
 
-syn match cPreProc '#\s*\I\i*'ms=s+1 contained
+syn match cPreProc '#\s*\I\i*' contained
+syn match cPreProc '#\s*pragma\s\+once' contained
 
 syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\=R"\z([[:alnum:]_{}[\]#<>%:;.?*\+\-/\^&|~!=,"']\{,16}\)(+ end=+)\z1"+ contains=@Spell
 syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=@Spell

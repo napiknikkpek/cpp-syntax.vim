@@ -1,4 +1,5 @@
-#include <asdf>
+#pragma once
+#include <string>
 # define MY_MACRO_1(x) x+1
 #define MY_MACRO(name)                             \
   struct name {                                    \
