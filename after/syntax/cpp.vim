@@ -14,13 +14,13 @@ syn keyword cpp_fundamental bool char char8_t char16_t char32_t double float int
 
 syn keyword cpp_constant false nullptr true
 
-syn match cpp_type '\I\i*' contained
-syn match cpp_identifier '\<\I\i*'
+syn match cpp_type '\<\I\i*\>' contained
+syn match cpp_identifier '\<\I\i*\>'
 
-syn match cpp_function '\<\I\i*('me=e-1
+syn match cpp_function '\<\I\i*\ze('
 
-syn match cpp_function '\I\i*<'me=e-1
-syn match cpp_function '\I\i*<'me=e-1 contained
+syn match cpp_type '\<\I\i*\ze<'
+syn match cpp_function '\<\I\i*\ze<\(\<\I\i*<\(([^()]*)\|[^<>]\)*>\|([^()]*)\|[^<>]\)*>('
 
 syn match cpp_type '\I\i*::'me=e-2
 
@@ -43,7 +43,7 @@ syn match cpp_type '\<\I\i*_type\>'
 
 syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
-syn match cpp_typename_ctx 'typename \I\i*\(::\I\i*\)*' contains=cpp_keyword,cpp_type,cpp_function
+syn match cpp_typename_ctx '\<typename\s\+\(\I\i*\)\?\(::\I\i*\)*' contains=cpp_keyword,cpp_type
 
 syn match cPreProc '#\s*\I\i*' contained
 syn match cPreProc '#\s*pragma\s\+once' contained
