@@ -6,4 +6,11 @@ foo::Bar<int> f;
 foo::Bar<A1> f;
 foo::Bar<3> f;
 foo<Bar, int, 3, N>(x, 3, N);
-asdf::foo<Bar, int, 3, N>(x, 3, N);
+foo::bar<Bar, int, 3, N>(x, 3, N);
+foo<T, bar<X>, bar<X, Y>> a;
+foo<T, bar<X>, bar<X, Y>>();
+foo<T, decltype(a > b), T>();
+foo<decltype(a + bar<T>{} - zoo<bar<T>>{})>();
+
+template <typename T, int N, typename... Args>
+void foo();

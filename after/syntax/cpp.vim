@@ -55,6 +55,8 @@ syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
 syn match cpp_typename_ctx '\<typename\s\+\(\I\i*\)\?\(::\I\i*\)*' contains=cpp_keyword,cpp_type
 
+syn region cpp_temp_ctx start='\<\I\i*<' end='>' contains=ALLBUT,cpp_identifier,@cPreProcGroup
+
 syn match cPreProc '#\s*\I\i*' contained
 syn match cPreProc '#\s*pragma\s\+once' contained
 
