@@ -7,11 +7,11 @@ syn clear cErrInBracket
 syn clear cStorageClass
 
 " except `const`, `using`, `class`, `struct`, `typename`
-syn keyword cpp_keyword alignas alignof and and_eq asm atomic_cancel atomic_commit atomic_noexcept auto bitand bitor bool break case catch char char8_t char16_t char32_t compl concept consteval constexpr const_cast continue co_await co_return co_yield decltype default delete do double dynamic_cast else enum explicit export extern false float for friend goto if inline int long mutable namespace new noexcept not not_eq nullptr operator or or_eq private protected public reflexpr register reinterpret_cast requires return short signed sizeof static static_assert static_cast switch synchronized template this thread_local throw true try typedef typeid union unsigned virtual void volatile wchar_t while xor xor_eq
+syn keyword cpp_keyword alignas alignof and and_eq asm atomic_cancel atomic_commit atomic_noexcept auto bitand bitor bool break case catch char char8_t char16_t char32_t compl concept consteval constexpr const_cast continue co_await co_return co_yield decltype default delete do double dynamic_cast else enum explicit export extern false float for friend goto if inline int long mutable new noexcept not not_eq nullptr operator or or_eq private protected public reflexpr register reinterpret_cast requires return short signed sizeof static static_assert static_cast switch synchronized template this thread_local throw true try typedef typeid union unsigned virtual void volatile wchar_t while xor xor_eq
 
 syn keyword cpp_keyword override final
 
-syn keyword cpp_keyword const using class struct typename contained
+syn keyword cpp_keyword const using class struct typename namespace contained
 
 syn keyword cpp_fundamental bool char char8_t char16_t char32_t double float int long short signed unsigned void wchar_t 
 
@@ -50,6 +50,11 @@ syn match cpp_keyword '\<\(class\|struct\)\>'
 syn match cpp_type '\<using\s\+\I\i*' contains=cpp_keyword
 syn match cpp_type '\<class\s\+\I\i*' contains=cpp_keyword
 syn match cpp_type '\<struct\s\+\I\i*' contains=cpp_keyword
+
+syn match namespace_ctx '\<namespace\>' contains=cpp_keyword
+syn match namespace_ctx '\<namespace\s\+\I\i*\(::\I\i*\)*\>' contains=cpp_keyword,cpp_type
+syn match namespace_ctx '\<using\s\+namespace\s\+\(::\)\?\I\i*\(::\I\i*\)*\>' contains=cpp_keyword,cpp_type
+syn match namespace_ctx '\<namespace\s\+\I\i*\s*=\s*\(::\)\?\I\i*\(::\I\i*\)*\>' contains=cpp_keyword,cpp_type
 
 syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
