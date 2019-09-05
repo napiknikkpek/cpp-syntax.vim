@@ -12,5 +12,8 @@ foo<T, bar<X>, bar<X, Y>>();
 foo<T, decltype(a > b), T>();
 foo<decltype(a + bar<T>{} - zoo<bar<T>>{})>();
 
+std::function<void(argument1&, const argument2&, decltype(a 
+      > b), const argument4&)> updated;
+
 template <typename T, int N, typename... Args>
 void foo();

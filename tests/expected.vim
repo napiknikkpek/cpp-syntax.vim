@@ -8,6 +8,7 @@ let s:symbol_table = {
 \   'Special': 'z',
 \   'Identifier': 'x',
 \   'Function': 'f',
+\   'Comment': 'm',
 \ }
 
 fu! s:syntax_at(lnum, col)
