@@ -46,9 +46,8 @@ syn match cpp_decl '\<\I\i*\s*\*\ze\I' contains=cpp_keyword,cpp_type
 syn match cpp_decl '\<\I\i*&\{1,2\}' contains=cpp_keyword,cpp_type
 syn match cpp_decl '\<\I\i*\s*&\{1,2\}\ze\I' contains=cpp_keyword,cpp_type
 
-syn match cpp_class_ctx '\<\(class\|struct\)\>' contains=cpp_keyword
-syn match cpp_class_ctx '\<class\s\+\I\i*' contains=cpp_keyword,cpp_type
-syn match cpp_class_ctx '\<struct\s\+\I\i*' contains=cpp_keyword,cpp_type
+syn region cpp_class_ctx start='class' end='{' end=';' contains=ALLBUT,cpp_identifier,cBlock
+syn region cpp_class_ctx start='struct' end='{' end=';' contains=ALLBUT,cpp_identifier,cBlock
 
 syn match cpp_using_ctx '\<using\>' contains=cpp_keyword
 syn match cpp_using_ctx '\<using\s\+\I\i*\>' contains=cpp_keyword,cpp_type
