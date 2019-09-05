@@ -1,5 +1,11 @@
-typedef Foo foo;
-using F = int;
-using Foo = Bar;
-using F;
-using foo::Foo;
+using foo;
+using ::foo::N;
+using foo::bar;
+using foo = int;
+using foo = bar;
+using foo = ::ns::bar;
+using foo = ::ns::bar<T>;
+using foo = ::ns::bar<T>::type;
+using foo = ns::bar<T>::iterator;
+using foo = bar<T, decltype(a)>::iterator;
+using foo = bar<T>::baz<A, B>::type;
