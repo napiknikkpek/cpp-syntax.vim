@@ -25,7 +25,7 @@ syn match cpp_function '\<\I\i*\ze('
 syn match cpp_type '\<\I\i*\ze<'
 syn match cpp_function '\<\I\i*\ze<\(\<\I\i*<\(([^()]*)\|[^<>]\)*>\|([^()]*)\|[^<>]\)*>('
 
-syn match cpp_macro '\<\(\u\|\d\|_\)\{5,}\>'
+syn match cpp_macro '\<\u\(\u\|\d\|_\)\{4,}\>'
 
 syn match cpp_type '\<\I\i*_t\>'
 syn match cpp_type '\<\I\i*_type\>'
@@ -35,16 +35,16 @@ syn match cpp_type '\<\I\i*\s*\ze{'
 
 syn match cpp_decl '\I\i*\s\+\ze\I' contains=cpp_type
 syn match cpp_decl '\<const\>' contains=cpp_keyword
-syn match cpp_decl '\<const\s\+\I\i*\>' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<const\s\+\I\i*\s*\*\s*\(const\>\)\?' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<const\s\+\I\i*\s*&\{1,2\}' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*\s\+const\s*\*\s*\(const\>\)\?' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*\s\+const\s*&' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*\s*\*\s*const\>' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*\*' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*\s*\*\ze\I' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*&\{1,2\}' contains=cpp_keyword,cpp_type
-syn match cpp_decl '\<\I\i*\s*&\{1,2\}\ze\I' contains=cpp_keyword,cpp_type
+syn match cpp_decl '\<const\s\+\I\i*\>' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<const\s\+\I\i*\s*\*\s*\(const\>\)\?' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<const\s\+\I\i*\s*&\{1,2\}' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*\s\+const\s*\*\s*\(const\>\)\?' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*\s\+const\s*&' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*\s*\*\s*const\>' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*\*' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*\s*\*\ze\I' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*&\{1,2\}' contains=cpp_keyword,cpp_type,cpp_fundamental
+syn match cpp_decl '\<\I\i*\s*&\{1,2\}\ze\I' contains=cpp_keyword,cpp_type,cpp_fundamental
 
 syn region cpp_class_ctx start='class' end='{' end=';' contains=ALLBUT,cpp_identifier,cBlock
 syn region cpp_class_ctx start='struct' end='{' end=';' contains=ALLBUT,cpp_identifier,cBlock
