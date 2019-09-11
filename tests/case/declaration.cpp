@@ -1,23 +1,43 @@
-Foo t;
-Foo{};
-Foo{1, 2};
-Foo& f;
-Foo &f;
-Foo const& f;
+int a;
+int & a;
+int const & a;
+const int a;
+const int & a;
+
+auto a;
+auto & a;
+auto const & a;
+const auto & a;
+auto && a;
+auto & [a, b] = pair;
+auto && [a, b] = pair;
+const auto & [a, b] = pair;
+
+Foo f;
 Foo* f;
 Foo *f;
-Foo const* f;
-Foo const* const f;
-const Foo f;
-const Foo& f;
-const Foo* f;
-const Foo* const f;
 Foo * f;
+Foo const * const f;
+Foo * const * f;
+const Foo f;
+const Foo* f;
+const Foo * const f;
+
+Foo& f;
+Foo &f;
 Foo & f;
+Foo const & f;
+const Foo & f;
+
+Foo&& f;
+Foo &&f;
+Foo && f;
+Foo const && f;
+const Foo && f;
+
+Foo{};
+Foo{1, 2};
+
+const std::vector<int>::iterator it;
+
 A<const T> a;
-auto a;
-const auto& a;
-auto&& a;
-auto& [a, b]
-const auto& [a, b]
-auto&& [a, b]

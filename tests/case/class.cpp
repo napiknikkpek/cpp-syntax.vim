@@ -17,3 +17,9 @@ struct B final : A {
 class ::ns::Base::X {};
 class ns::Base<int>::X {};
 class Base<T>::X {};
+class Foo {
+  struct Bar {
+    int x;
+  };
+  int x;
+};

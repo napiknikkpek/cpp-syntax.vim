@@ -46,17 +46,15 @@ syn match cpp_decl '\<\I\i*\s*\*\ze\I' contains=cpp_keyword,cpp_type,cpp_fundame
 syn match cpp_decl '\<\I\i*&\{1,2\}' contains=cpp_keyword,cpp_type,cpp_fundamental
 syn match cpp_decl '\<\I\i*\s*&\{1,2\}\ze\I' contains=cpp_keyword,cpp_type,cpp_fundamental
 
-syn region cpp_class_ctx start='class' end='{' end=';' contains=ALLBUT,cpp_identifier,cBlock
-syn region cpp_class_ctx start='struct' end='{' end=';' contains=ALLBUT,cpp_identifier,cBlock
+syn region cpp_class_ctx start='\<class\>' end='\ze{' end=';' contains=ALLBUT,cpp_identifier
+syn region cpp_class_ctx start='\<struct\>' end='\ze{' end=';' contains=ALLBUT,cpp_identifier
 
 syn match cpp_using_ctx '\<using\>' contains=cpp_keyword
 syn match cpp_using_ctx '\<using\s\+\I\i*\>' contains=cpp_keyword,cpp_type
 syn match cpp_using_ctx '\<using\s\+\I\i*\s*=\s*\(\(::\)\?\I\i*\(<[^<>]*>\)\?\)*' contains=ALLBUT,cpp_identifier
 
-syn match namespace_ctx '\<namespace\>' contains=cpp_keyword
-syn match namespace_ctx '\<namespace\s\+\I\i*\(::\I\i*\)*\>' contains=cpp_keyword,cpp_type
-syn match namespace_ctx '\<using\s\+namespace\s\+\(::\)\?\I\i*\(::\I\i*\)*\>' contains=cpp_keyword,cpp_type
-syn match namespace_ctx '\<namespace\s\+\I\i*\s*=\s*\(::\)\?\I\i*\(::\I\i*\)*\>' contains=cpp_keyword,cpp_type
+syn region namespace_ctx start='\<namespace\>' end='\ze{' end=';' contains=ALLBUT,cpp_identifier
+syn region namespace_ctx start='\<using\s\+namespace\>' end=';' contains=ALLBUT,cpp_identifier
 
 syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
@@ -67,7 +65,7 @@ syn region cpp_temp_ctx start='\<\I\i*<' end='>' contains=ALLBUT,cpp_identifier,
 syn match cPreProc '#\s*\I\i*' contained
 syn match cPreProc '#\s*pragma\s\+once' contained
 
-syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\=R"\z([[:alnum:]_{}[\]#<>%:;.?*\+\-/\^&|~!=,"']\{,16}\)(+ end=+)\z1"+ contains=@Spell
+syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\=R"\z([[:alnum:]_{}[\]#<>%:;.?*\+\-/\^&|~!=,"']\{,16}\)(+ end=+)\z1"+ contains=@Spell fold
 syn region cppRawString	matchgroup=cppRawStringDelimiter start=+\%(u8\|[uLU]\)\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=@Spell
 
 hi! def link cpp_keyword Statement
