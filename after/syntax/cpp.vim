@@ -49,12 +49,9 @@ syn match cpp_macro '\<\u\(\u\|\d\|_\)\{3,}\>'
 syn region cpp_class_ctx start='\<class\>' end='\ze{' end=';' contains=ALLBUT,cpp_identifier
 syn region cpp_class_ctx start='\<struct\>' end='\ze{' end=';' contains=ALLBUT,cpp_identifier
 
-syn match cpp_using_ctx '\<using\>' contains=cpp_keyword
-syn match cpp_using_ctx '\<using\s\+\I\i*\>' contains=cpp_keyword,cpp_type
-syn match cpp_using_ctx '\<using\s\+\I\i*\s*=\s*\(\(::\)\?\I\i*\(<[^<>]*>\)\?\)*' contains=ALLBUT,cpp_identifier
+syn region cpp_using_ctx start='\<using\>' end=';' contains=ALLBUT,cpp_identifier,cpp_namespace_ctx
 
-syn region namespace_ctx start='\<namespace\>' end='\ze{' end=';' contains=ALLBUT,cpp_identifier
-syn region namespace_ctx start='\<using\s\+namespace\>' end=';' contains=ALLBUT,cpp_identifier
+syn region cpp_namespace_ctx start='\<namespace\>' end='\ze{' end=';' contains=cpp_type,cpp_keyword
 
 syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
 syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
