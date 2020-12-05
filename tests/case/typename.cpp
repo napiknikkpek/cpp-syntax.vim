@@ -7,3 +7,4 @@ template <typename... Args>
 void foo(Args&&... args) {
   fn(args...);
 }
+typename A<int>::asdf;

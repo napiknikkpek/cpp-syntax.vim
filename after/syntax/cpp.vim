@@ -53,13 +53,11 @@ syn region cpp_using_ctx start='\<using\>' end=';' contains=ALLBUT,cpp_identifie
 
 syn region cpp_namespace_ctx start='\<namespace\>' end='\ze{' end=';' contains=cpp_type,cpp_keyword
 
-syn match cpp_typename_ctx '\<typename\>' contains=cpp_keyword
-syn match cpp_typename_ctx '\<typename\s*...\s*\I\i*\>' contains=cpp_keyword,cpp_type
-syn match cpp_typename_ctx '\<typename\s\+\(\I\i*\)\?\(::\I\i*\)*' contains=cpp_keyword,cpp_type
+syn region cpp_typename_ctx start='\<typename\>' end=',' end='>' end=';' contains=ALLBUT,cpp_identifier
 
-syn region cpp_temp_ctx start='\<\I\i*<' end='>' contains=ALLBUT,cpp_identifier,cCppParen,@cParenGroup
+syn region cpp_template_ctx start='\<\I\i*<' end='>' contains=ALLBUT,cpp_identifier,cCppParen,@cParenGroup
 
-" syn match cpp_identifier '\<\I\i*<\(\<\I\i*<\(([^()]*)\|[^<>]\)*>\|([^()]*)\|[^<>]\)*>\s\+\I\i*\ze{' contains=cpp_temp_ctx
+" syn match cpp_identifier '\<\I\i*<\(\<\I\i*<\(([^()]*)\|[^<>]\)*>\|([^()]*)\|[^<>]\)*>\s\+\I\i*\ze{' contains=cpp_template_ctx
 
 syn match cPreProc '#\s*\I\i*' contained
 syn match cPreProc '#\s*pragma\s\+once' contained
