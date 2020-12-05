@@ -1,9 +1,8 @@
 language: generic
 os: linux
-dist: xenial
+dist: focal
 
 install:
-  - sudo add-apt-repository ppa:neovim-ppa/stable -y
   - sudo apt update -q
   - sudo apt install -y neovim
   - THEMIS_URL="https://github.com/thinca/vim-themis/archive/v1.5.4.tar.gz"
