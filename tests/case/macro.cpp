@@ -8,3 +8,4 @@
 auto x = MY_MACRO_1(3);
 MY_MACRO(Name)
 const int N = 200000;
+NONE
