@@ -41,3 +41,8 @@ Foo{1, 2};
 const std::vector<int>::iterator it;
 
 A<const T> a;
+
+Foo foo{};
+std::vector<int> foo{};
+
+return Foo{};
