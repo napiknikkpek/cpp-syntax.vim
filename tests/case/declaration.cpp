@@ -18,7 +18,7 @@ Foo* f;
 Foo *f;
 Foo * f;
 Foo const * const f;
-Foo * const * f;
+Foo * const f;
 const Foo f;
 const Foo* f;
 const Foo * const f;
@@ -27,13 +27,11 @@ Foo& f;
 Foo &f;
 Foo & f;
 Foo const & f;
-const Foo & f;
 
 Foo&& f;
 Foo &&f;
 Foo && f;
 Foo const && f;
-const Foo && f;
 
 Foo{};
 Foo{1, 2};
