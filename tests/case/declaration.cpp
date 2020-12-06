@@ -45,4 +45,6 @@ A<const T> a;
 Foo foo{};
 std::vector<int> foo{};
 
+ranges::range auto X;
+
 return Foo{};
