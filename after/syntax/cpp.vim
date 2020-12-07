@@ -39,7 +39,7 @@ syn match cpp_type '\<\I\i*\ze\s\+\*\I'
 
 syn match cpp_type_ctx '\<\I\i*\s*\*\s*const' contains=cpp_keyword,cpp_type
 
-syn match cpp_decl '\I\i*\s\+\ze\I' contains=cpp_type nextgroup=cpp_identifier,cpp_keyword
+syn match cpp_decl '\I\i*\s\+\ze\I' contains=cpp_type nextgroup=cpp_identifier,cpp_keyword,cpp_function
 
 syn match cpp_macro '\<\u\(\u\|\d\|_\)\{3,}\>'
 
@@ -52,7 +52,7 @@ syn region cpp_namespace_ctx start='\<namespace\>' end='\ze{' end=';' contains=c
 
 syn region cpp_typename_ctx start='\<typename\>' end=',' end='>' end=';' contains=ALLBUT,cpp_identifier
 
-syn region cpp_template_ctx start='\<\I\i*<' end='>\s*' contains=ALLBUT,cpp_identifier,cCppParen,@cParenGroup nextgroup=cpp_identifier,cpp_keyword
+syn region cpp_template_ctx start='\<\I\i*<' end='>\s*' contains=ALLBUT,cpp_identifier,cCppParen,@cParenGroup nextgroup=cpp_identifier,cpp_keyword,cpp_function
 
 syn match cPreProc '#\s*\I\i*' contained
 syn match cPreProc '#\s*pragma\s\+once' contained
